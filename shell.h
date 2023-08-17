@@ -17,4 +17,14 @@
 
 #include "marcos.h" //remember this one from this other project
 
+typedef struct info
+{
+	char *var;
+	struct list *next;
+}list_t
+
+int unsetenv(list_t **env, char **str);
+int setenv(list_t *env, cahr **str);
+int env(list_t *env, char *str);
+int get_env(list_t *env, char *str);
 
