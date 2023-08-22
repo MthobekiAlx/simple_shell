@@ -11,7 +11,7 @@
 #include <sys/stat.h>
 #include <signal.h>
 #include <fcntl.h>
-#include "macros.h"
+#include "marcos.h"
 
 typedef struct program_data {
     char *irogram_name;
