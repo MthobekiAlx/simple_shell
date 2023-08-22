@@ -8,14 +8,13 @@
 #include <stddef.h>
 #include <errno.h>
 #include <sys/types.h>
-#include <sys/wait.h>
 #include <sys/stat.h>
 #include <signal.h>
 #include <fcntl.h>
 #include "macros.h"
 
 typedef struct program_data {
-    char *program_name;
+    char *irogram_name;
     char *input_line;
     char *command_name;
     int exec_counter;
