@@ -9,41 +9,75 @@ static char *input_buffer = NULL;
 static size_t buffer_size = 0;
 static size_t buffer_position = 0;
 
+ssize_t _getline(char **lineptr, size_t *n, FILE *stream);
+
+int main(void) {
+    size_t n = 10;
+    char *buf = (char *)malloc(n);
+    ssize_t chars_read;
+
+    if (!buf) {
+        perror("Memory allocation failed");
+        return 1;
+    }
+
+    chars_read = _getline(&buf, &n, stdin);
+
+    if (chars_read == -1) {
+        perror("Error reading input");
+        free(buf);
+        return 1;
+    } else {
+        printf("Read %ld characters:\n%s", (long)chars_read, buf);
+    }
+
+    free(buf);
+    return 0;
+}
+
 ssize_t _getline(char **lineptr, size_t *n, FILE *stream) {
+    size_t chars_read = 0;
+    ssize_t read_result;
+    char *line = *lineptr;
+    char c;
+    char *new_line;
+
     if (!input_buffer) {
         input_buffer = (char *)malloc(INITIAL_BUFFER_SIZE);
         if (!input_buffer) {
-            return -1; // Error: memory allocation failed
+            perror("Memory allocation failed");
+            return -1;
         }
         buffer_size = INITIAL_BUFFER_SIZE;
     }
 
-    size_t chars_read = 0;
-    char *line = *lineptr;
-
     while (1) {
         if (buffer_position >= buffer_size) {
-            ssize_t read_result = read(fileno(stream), input_buffer, buffer_size);
+            read_result = read(fileno(stream), input_buffer, buffer_size);
             if (read_result == 0) {
                 if (chars_read == 0) {
-                    return -1; // Error or end of file
+                    return -1;
                 } else {
-                    break; // Return what was read so far
+                    break;
                 }
             } else if (read_result == -1) {
-                return -1; // Error reading
+                perror("Error reading input");
+                return -1;
             }
             buffer_position = 0;
         }
 
-        char c = input_buffer[buffer_position++];
+        c = input_buffer[buffer_position++];
         
         if (chars_read + 1 >= *n) {
             *n *= 2;
-            line = realloc(line, *n);
-            if (!line) {
-                return -1; // Error: memory allocation failed
+            new_line = realloc(line, *n);
+            if (!new_line) {
+                perror("Memory allocation failed");
+                free(line);
+                return -1;
             }
+            line = new_line;
             *lineptr = line;
         }
         
@@ -58,19 +92,3 @@ ssize_t _getline(char **lineptr, size_t *n, FILE *stream) {
     return chars_read;
 }
 
-int main(void) {
-    size_t n = 10;
-    char *buf = (char *)malloc(n);
-
-    ssize_t chars_read = _getline(&buf, &n, stdin);
-
-    if (chars_read == -1) {
-        perror("Error reading input");
-    } else {
-        printf("Read %zd characters:\n%s", chars_read, buf);
-    }
-
-    free(buf);
-    free(input_buffer);
-    return 0;
-}
