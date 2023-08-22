@@ -1,94 +1,96 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <unistd.h>
+#include "shell.h"
 
-#define INITIAL_BUFFER_SIZE 10
+/**
+* _getline - read one line from the prompt.
+* @data: struct for the program's data
+*
+* Return: reading counting bytes.
+*/
+int _getline(data_of_program *data)
+{
+	char buff[BUFFER_SIZE] = {'\0'};
+	static char *array_commands[10] = {NULL};
+	static char array_operators[10] = {'\0'};
+	ssize_t bytes_read, i = 0;
 
-static char *input_buffer = NULL;
-static size_t buffer_size = 0;
-static size_t buffer_position = 0;
+	/* check if doesnot exist more commands in the array */
+	/* and checks the logical operators */
+	if (!array_commands[0] || (array_operators[0] == '&' && errno != 0) ||
+		(array_operators[0] == '|' && errno == 0))
+	{
+		/*free the memory allocated in the array if it exists */
+		for (i = 0; array_commands[i]; i++)
+		{
+			free(array_commands[i]);
+			array_commands[i] = NULL;
+		}
 
-ssize_t custom_getline(char **lineptr, size_t *n, FILE *stream);
+		/* read from the file descriptor int to buff */
+		bytes_read = read(data->file_descriptor, &buff, BUFFER_SIZE - 1);
+		if (bytes_read == 0)
+			return (-1);
 
-int main(void) {
-    size_t n = 10;
-    char *buf = (char *)malloc(n);
-    ssize_t chars_read;
+		/* split lines for \n or ; */
+		i = 0;
+		do {
+			array_commands[i] = str_duplicate(_strtok(i ? NULL : buff, "\n;"));
+			/*checks and split for && and || operators*/
+			i = check_logic_ops(array_commands, i, array_operators);
+		} while (array_commands[i++]);
+	}
 
-    if (!buf) {
-        perror("Memory allocation failed");
-        return 1;
-    }
+	/*obtains the next command (command 0) and remove it for the array*/
+	data->input_line = array_commands[0];
+	for (i = 0; array_commands[i]; i++)
+	{
+		array_commands[i] = array_commands[i + 1];
+		array_operators[i] = array_operators[i + 1];
+	}
 
-    chars_read = custom_getline(&buf, &n, stdin);
-
-    if (chars_read == -1) {
-        perror("Error reading input");
-        free(buf);
-        return 1;
-    } else {
-        printf("Read %ld characters:\n%s", (long)chars_read, buf);
-    }
-
-    free(buf);
-    return 0;
+	return (str_length(data->input_line));
 }
 
-ssize_t custom_getline(char **lineptr, size_t *n, FILE *stream) {
-    size_t chars_read = 0;
-    ssize_t read_result;
-    char *line = *lineptr;
-    char c;
-    char *new_line;
 
-    if (!input_buffer) {
-        input_buffer = (char *)malloc(INITIAL_BUFFER_SIZE);
-        if (!input_buffer) {
-            perror("Memory allocation failed");
-            return -1;
-        }
-        buffer_size = INITIAL_BUFFER_SIZE;
-    }
+/**
+* check_logic_ops - checks and split for && and || operators
+* @array_commands: array of the commands.
+* @i: index in the array_commands to be checked
+* @array_operators: array of the logical operators for each previous command
+*
+* Return: index of the last command in the array_commands.
+*/
+int check_logic_ops(char *array_commands[], int i, char array_operators[])
+{
+	char *temp = NULL;
+	int j;
 
-    while (1) {
-        if (buffer_position >= buffer_size) {
-            read_result = read(fileno(stream), input_buffer, buffer_size);
-            if (read_result == 0) {
-                if (chars_read == 0) {
-                    return -1;
-                } else {
-                    break;
-                }
-            } else if (read_result == -1) {
-                perror("Error reading input");
-                return -1;
-            }
-            buffer_position = 0;
-        }
-
-        c = input_buffer[buffer_position++];
-        
-        if (chars_read + 1 >= *n) {
-            *n *= 2;
-            new_line = realloc(line, *n);
-            if (!new_line) {
-                perror("Memory allocation failed");
-                free(line);
-                return -1;
-            }
-            line = new_line;
-            *lineptr = line;
-        }
-        
-        line[chars_read++] = c;
-        
-        if (c == '\n') {
-            break;
-        }
-    }
-    
-    line[chars_read] = '\0';
-    return chars_read;
+	/* checks for the & char in the command line*/
+	for (j = 0; array_commands[i] != NULL  && array_commands[i][j]; j++)
+	{
+		if (array_commands[i][j] == '&' && array_commands[i][j + 1] == '&')
+		{
+			/* split the line when chars && was found */
+			temp = array_commands[i];
+			array_commands[i][j] = '\0';
+			array_commands[i] = str_duplicate(array_commands[i]);
+			array_commands[i + 1] = str_duplicate(temp + j + 2);
+			i++;
+			array_operators[i] = '&';
+			free(temp);
+			j = 0;
+		}
+		if (array_commands[i][j] == '|' && array_commands[i][j + 1] == '|')
+		{
+			/* split the line when chars || was found */
+			temp = array_commands[i];
+			array_commands[i][j] = '\0';
+			array_commands[i] = str_duplicate(array_commands[i]);
+			array_commands[i + 1] = str_duplicate(temp + j + 2);
+			i++;
+			array_operators[i] = '|';
+			free(temp);
+			j = 0;
+		}
+	}
+	return (i);
 }
-
