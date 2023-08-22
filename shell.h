@@ -1,4 +1,4 @@
- #ifndef SHELL
+#ifndef SHELL
 #define SHELL
 
 #include <stdlib.h>
@@ -60,4 +60,3 @@ void illegal_number(char *str, int c_n, list_t *env);
 char *int_to_string(int num);
 
 #endif
-

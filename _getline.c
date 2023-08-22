@@ -1,94 +1,45 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <unistd.h>
+#include "shell.h"
 
-#define INITIAL_BUFFER_SIZE 10
+/**
+ * get_line - stores into malloced buffer the user's command into shell
+ * @str: buffer
+ * Return: number of characters read
+ */
+size_t get_line(char **str)
+{
+	ssize_t i = 0, size = 0, t = 0, t2 = 0, n = 0;
+	char buff[1024];
 
-static char *input_buffer = NULL;
-static size_t buffer_size = 0;
-static size_t buffer_position = 0;
+	/* read while there's stdin greater than buffsize; -1 to add a '\0' */
+	while (t2 == 0 && (i = read(STDIN_FILENO, buff, 1024 - 1)))
+	{
+		if (i == -1) /* check if read errored */
+			return (-1);
 
-ssize_t _getline(char **lineptr, size_t *n, FILE *stream);
+		buff[i] = '\0'; /* terminate buff with \0 to use with _strcat */
 
-int main(void) {
-    size_t n = 10;
-    char *buf = (char *)malloc(n);
-    ssize_t chars_read;
+		n = 0; /* last loop if \n is found in the stdin read */
+		while (buff[n] != '\0')
+		{
+			if (buff[n] == '\n')
+				t2 = 1;
+			n++;
+		}
 
-    if (!buf) {
-        perror("Memory allocation failed");
-        return 1;
-    }
-
-    chars_read = _getline(&buf, &n, stdin);
-
-    if (chars_read == -1) {
-        perror("Error reading input");
-        free(buf);
-        return 1;
-    } else {
-        printf("Read %ld characters:\n%s", (long)chars_read, buf);
-    }
-
-    free(buf);
-    return 0;
+		/* copy what's read to buff into get_line's buffer */
+		if (t == 0) /* malloc the first time */
+		{
+			i++;
+			*str = malloc(sizeof(char) * i);
+			*str = _strcpy(*str, buff);
+			size = i;
+			t = 1;
+		}
+		else /* _realloc via _strcat with each loop */
+		{
+			size += i;
+			*str = _strcat(*str, buff);
+		}
+	}
+	return (size);
 }
-
-ssize_t _getline(char **lineptr, size_t *n, FILE *stream) {
-    size_t chars_read = 0;
-    ssize_t read_result;
-    char *line = *lineptr;
-    char c;
-    char *new_line;
-
-    if (!input_buffer) {
-        input_buffer = (char *)malloc(INITIAL_BUFFER_SIZE);
-        if (!input_buffer) {
-            perror("Memory allocation failed");
-            return -1;
-        }
-        buffer_size = INITIAL_BUFFER_SIZE;
-    }
-
-    while (1) {
-        if (buffer_position >= buffer_size) {
-            read_result = read(fileno(stream), input_buffer, buffer_size);
-            if (read_result == 0) {
-                if (chars_read == 0) {
-                    return -1;
-                } else {
-                    break;
-                }
-            } else if (read_result == -1) {
-                perror("Error reading input");
-                return -1;
-            }
-            buffer_position = 0;
-        }
-
-        c = input_buffer[buffer_position++];
-        
-        if (chars_read + 1 >= *n) {
-            *n *= 2;
-            new_line = realloc(line, *n);
-            if (!new_line) {
-                perror("Memory allocation failed");
-                free(line);
-                return -1;
-            }
-            line = new_line;
-            *lineptr = line;
-        }
-        
-        line[chars_read++] = c;
-        
-        if (c == '\n') {
-            break;
-        }
-    }
-    
-    line[chars_read] = '\0';
-    return chars_read;
-}
-
