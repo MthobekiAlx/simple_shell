@@ -49,11 +49,11 @@ int builtin_env(program_data *data)
 }
 
 /**
- * builtin_set_env - ..
+ * _setenv - ..
  * @data: struct for the program's data
  * Return: zero if sucess, or other number if its declared in the arguments
  */
-int builtin_set_env(program_data *data)
+int _setenv(program_data *data)
 {
 	/* validate args */
 	if (data->tokens[1] == NULL || data->tokens[2] == NULL)
@@ -71,11 +71,11 @@ int builtin_set_env(program_data *data)
 }
 
 /**
- * builtin_unset_env - ..
+ * _unsetenv - ..
  * @data: struct for the program's data'
  * Return: ..
  */
-int builtin_unset_env(program_data *data)
+int _unsetenv(program_data *data)
 {
 	/* validate args */
 	if (data->tokens[1] == NULL)
