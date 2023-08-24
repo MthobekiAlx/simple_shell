@@ -19,7 +19,7 @@
 /**
  * struct info- structure for the program's data
  * @program_name: the name of the executable
- * @input_line: pointer to the _getline
+ * @input_line: pointer to the _get_line
  * @command_name: pointer to the first command typed by the user
  * @exec_counter: number of excecuted comands
  * @file_descriptor: file descriptor of commands
@@ -54,7 +54,7 @@ typedef struct builtins
 void inicialize_data(program_data *data, int arc, char *argv[], char **env);
 void sisifo(char *prompt, program_data *data);
 void handle_ctrl_c(int opr UNUSED);
-int _getline(program_data *data);
+int _get_line(program_data *data);
 int check_logic_ops(char *array_commands[], int i, char array_operators[]);
 void expand_variables(program_data *data);
 void expand_alias(program_data *data);
