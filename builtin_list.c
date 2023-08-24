@@ -11,10 +11,10 @@ int list_builtin(program_data *data)
 	int iterator;
 	builtins options[] = {
 		{"exit", exit_builtin},
-		{"help", builtin_help},
+		{"help", help_builtin},
 		{"cd", cd_builtin},
-		{"alias", builtin_alias},
-		{"env", builtin_env},
+		{"alias", alias_builtin},
+		{"env", env_builtin},
 		{"setenv", _set_env},
 		{"unsetenv", _unset_env},
 		{NULL, NULL}

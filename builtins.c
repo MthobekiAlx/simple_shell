@@ -90,11 +90,11 @@ int set_work_directory(program_data *data, char *new_dir)
 }
 
 /**
- * builtin_help - shows the environment where the shell runs
+ * help_builtin - shows the environment where the shell runs
  * @data: struct for the program's data
  * Return: zero if sucess, or other number if its declared in the arguments
  */
-int builtin_help(program_data *data)
+int help_builtin(program_data *data)
 {
 	int i, length = 0;
 	char *mensajes[6] = {NULL};
@@ -135,11 +135,11 @@ int builtin_help(program_data *data)
 }
 
 /**
- * builtin_alias - add, remove or show aliases
+ * alias_builtin - add, remove or show aliases
  * @data: struct for the program's data
  * Return: zero if sucess, or other number if its declared in the arguments
  */
-int builtin_alias(program_data *data)
+int alias_builtin(program_data *data)
 {
 	int i = 0;
 
