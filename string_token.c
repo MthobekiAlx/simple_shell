@@ -5,7 +5,7 @@
  * @delim: It mark's off strings in parts.
  * Return: A pointer to the created token
 */
-char *__strtok(char *line, char *delim)
+char *_strtok(char *line, char *delim)
 {
 	int j;
 	static char *str;
