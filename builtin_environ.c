@@ -3,7 +3,7 @@
 /**
  * env_builtin - shows the environment where the shell runs
  * @data: struct for the program's data
- * Return: zero if sucess, or other number if its declared in the arguments
+ * Return: zero if success 
  */
 int env_builtin(program_data *data)
 {
@@ -51,7 +51,7 @@ int env_builtin(program_data *data)
 /**
  * _set_env - ..
  * @data: struct for the program's data
- * Return: zero if sucess, or other number if its declared in the arguments
+ * Return: zero if sucess
  */
 int _set_env(program_data *data)
 {
