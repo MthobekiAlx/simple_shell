@@ -22,7 +22,7 @@
 /**
  * struct info- struct for the program's data
  * @program_name: the name of the executable
- * @input_line: pointer to the input read for _getline
+ * @input_line: pointer to the input read for _get_line
  * @command_name: pointer to the first command typed by the user
  * @exec_counter: number of excecuted comands
  * @file_descriptor: file descriptor to the input of commands
@@ -69,10 +69,10 @@ void sisifo(char *prompt, program_data *data);
 void handle_ctrl_c(int opr UNUSED);
 
 
-/*========  _getline.c  ========*/
+/*========  _get_line.c  ========*/
 
 /* Read one line of the standar input*/
-int _getline(program_data *data);
+int _get_line(program_data *data);
 
 /* split the each line for the logical operators if it exist */
 int check_logic_ops(char *array_commands[], int i, char array_operators[]);

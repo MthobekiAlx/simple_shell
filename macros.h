@@ -7,7 +7,7 @@
 /* Resume from the unused attibute */
 #define UNUSED __attribute__((unused))
 
-/* buffer size for each read call in _getline */
+/* buffer size for each read call in _get_line */
 #define BUFFER_SIZE 1024
 
 /************* FORMATTED STRING FOR HELP BUILT IN **************/
