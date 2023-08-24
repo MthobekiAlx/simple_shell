@@ -37,12 +37,12 @@ void long_to_string(long number, char *string, int base)
 
 
 /**
- * atoi - convert a string to an integer.
+ * _atoi - convert a string to an integer.
  *
  * @s: pointer to str origen.
  * Return: int of string or 0.
  */
-int atoi(char *s)
+int _atoi(char *s)
 {
 	int sign = 1;
 	unsigned int number = 0;

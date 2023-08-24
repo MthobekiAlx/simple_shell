@@ -87,7 +87,7 @@ int string_compare(char *string1, char *string2, int number);
 char *string_concat(char *string1, char *string2);
 void string_reverse(char *string);
 void long_to_string(long number, char *string, int base);
-int atoi(char *s);
+int _atoi(char *s);
 int count_characters(char *string, char *character);
 int print_alias(program_data *data, char *alias);
 char *get_alias(program_data *data, char *alias);
