@@ -35,7 +35,7 @@ int _get_line(program_data *data)
 		do {
 			array_commands[i] = str_duplicate(_strtok(i ? NULL : buff, "\n;"));
 			/*checks and split for && and || operators*/
-			i = check_logic_ops(array_commands, i, array_operators);
+			i = check_logical_operators(array_commands, i, array_operators);
 		} while (array_commands[i++]);
 	}
 
@@ -52,14 +52,14 @@ int _get_line(program_data *data)
 
 
 /**
-* check_logic_ops - checks and split for && and || operators
+* check_logical_operators - checks and split for && and || operators
 * @array_commands: array of the commands.
 * @i: index in the array_commands to be checked
 * @array_operators: array of the logical operators for each previous command
 *
 * Return: index of the last command in the array_commands.
 */
-int check_logic_ops(char *array_commands[], int i, char array_operators[])
+int check_logical_operators(char *array_commands[], int i, char array_operators[])
 {
 	char *temp = NULL;
 	int j;
