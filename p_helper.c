@@ -28,7 +28,7 @@ int _printe(char *string)
  * Return: the number of bytes writed or .
  * On error, -1 is returned, and errno is set appropriately.
  */
-int _print_error(int errorcode, data_of_program *data)
+int _print_error(int errorcode, program_data *data)
 {
 	char n_as_string[10] = {'\0'};
 

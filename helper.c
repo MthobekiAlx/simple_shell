@@ -5,7 +5,7 @@
  * @data: struct of the program's data
  * Return: Nothing
  */
-void free_recurrent_data(data_of_program *data)
+void free_recurrent_data(program_data *data)
 {
 	if (data->tokens)
 		free_array_of_pointers(data->tokens);
@@ -24,7 +24,7 @@ void free_recurrent_data(data_of_program *data)
  * @data: struct of the program's data
  * Return: Nothing
  */
-void free_all_data(data_of_program *data)
+void free_all_data(program_data *data)
 {
 	if (data->file_descriptor != 0)
 	{
