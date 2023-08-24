@@ -3,7 +3,7 @@
 /**
  * exit_builtin - exit of the program with the status
  * @data: struct for the program's data
- * Return: zero if sucess, or other number if its declared in the arguments
+ * Return: zero if sucess
  */
 int exit_builtin(program_data *data)
 {
@@ -27,7 +27,7 @@ int exit_builtin(program_data *data)
 /**
  * cd_builtin - change the current directory
  * @data: struct for the program's data
- * Return: zero if sucess, or other number if its declared in the arguments
+ * Return: zero if sucess
  */
 int cd_builtin(program_data *data)
 {
@@ -63,10 +63,10 @@ int cd_builtin(program_data *data)
 }
 
 /**
- * set_work_dir - set the work directory
+ * set_work_dir - set the work dir
  * @data: struct for the program's data
  * @new_dir: path to be set as work directory
- * Return: zero if sucess, or other number if its declared in the arguments
+ * Return: zero if sucess
  */
 int set_work_dir(program_data *data, char *new_dir)
 {
