@@ -96,7 +96,7 @@ void sisifo(char *prompt, program_data *data)
 	while (++(data->exec_counter))
 	{
 		_print(prompt);
-		error_code = string_len = getline(data);
+		error_code = string_len = _getline(data);
 
 		if (error_code == EOF)
 		{

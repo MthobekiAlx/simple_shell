@@ -1,12 +1,12 @@
 #include "shell.h"
 
 /**
-* getline - read one line from the prompt.
+* _getline - read one line from the prompt.
 * @data: struct for the program's data
 *
 * Return: reading counting bytes.
 */
-int getline(program_data *data)
+int _getline(program_data *data)
 {
 	char buff[BUFFER_SIZE] = {'\0'};
 	static char *array_commands[10] = {NULL};
