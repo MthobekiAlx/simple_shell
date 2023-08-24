@@ -13,7 +13,7 @@ int env_builtin(program_data *data)
 
 	/* if not arguments */
 	if (data->tokens[1] == NULL)
-		print_environ(data);
+		print_envi(data);
 	else
 	{
 		for (i = 0; data->tokens[1][i]; i++)
@@ -26,7 +26,7 @@ int env_builtin(program_data *data)
 					env_set_key(cpname, data->tokens[1] + i + 1, data);
 
 				/* print the environ */
-				print_environ(data);
+				print_envi(data);
 				if (env_get_key(cpname, data) == NULL)
 				{/* print the variable if it does not exist in the environ */
 					_print(data->tokens[1]);

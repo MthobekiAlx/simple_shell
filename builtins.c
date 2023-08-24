@@ -41,7 +41,7 @@ int cd_builtin(program_data *data)
 		{
 			dir_old = env_get_key("OLDPWD", data);
 			if (dir_old)
-				error_code = set_work_directory(data, dir_old);
+				error_code = set_work_dir(data, dir_old);
 			_print(env_get_key("PWD", data));
 			_print("\n");
 
@@ -49,7 +49,7 @@ int cd_builtin(program_data *data)
 		}
 		else
 		{
-			return (set_work_directory(data, data->tokens[1]));
+			return (set_work_dir(data, data->tokens[1]));
 		}
 	}
 	else
@@ -57,18 +57,18 @@ int cd_builtin(program_data *data)
 		if (!dir_home)
 			dir_home = getcwd(old_dir, 128);
 
-		return (set_work_directory(data, dir_home));
+		return (set_work_dir(data, dir_home));
 	}
 	return (0);
 }
 
 /**
- * set_work_directory - set the work directory
+ * set_work_dir - set the work directory
  * @data: struct for the program's data
  * @new_dir: path to be set as work directory
  * Return: zero if sucess, or other number if its declared in the arguments
  */
-int set_work_directory(program_data *data, char *new_dir)
+int set_work_dir(program_data *data, char *new_dir)
 {
 	char old_dir[128] = {0};
 	int err_code = 0;
