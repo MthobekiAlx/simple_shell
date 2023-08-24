@@ -10,7 +10,7 @@ int execute(program_data *data)
 	pid_t pidd;
 
 	/* check for program in built ins */
-	retval = builtins_list(data);
+	retval = list_builtin(data);
 	if (retval != -1)/* if program was found in built ins */
 		return (retval);
 

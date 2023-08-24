@@ -1,11 +1,11 @@
 #include "shell.h"
 
 /**
- * builtin_exit - exit of the program with the status
+ * exit_builtin - exit of the program with the status
  * @data: struct for the program's data
  * Return: zero if sucess, or other number if its declared in the arguments
  */
-int builtin_exit(program_data *data)
+int exit_builtin(program_data *data)
 {
 	int i;
 
@@ -25,11 +25,11 @@ int builtin_exit(program_data *data)
 }
 
 /**
- * builtin_cd - change the current directory
+ * cd_builtin - change the current directory
  * @data: struct for the program's data
  * Return: zero if sucess, or other number if its declared in the arguments
  */
-int builtin_cd(program_data *data)
+int cd_builtin(program_data *data)
 {
 	char *dir_home = env_get_key("HOME", data), *dir_old = NULL;
 	char old_dir[128] = {0};

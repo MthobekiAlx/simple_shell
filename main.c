@@ -106,7 +106,7 @@ void sisifo(char *prompt, program_data *data)
 		if (string_len >= 1)
 		{
 			expand_alias(data);
-			expand_variables(data);
+			expand_var(data);
 			tokenize(data);
 			if (data->tokens[0])
 			{ /* if a text is given to prompt, execute */
