@@ -1,7 +1,7 @@
 #include "shell.h"
 
 /**
- * free_recurrent_data - frees the fields needed
+ * free_recurrent_data - frees the fields
  * @data: struct of the program's data
  * Return: Nothing
  */
@@ -20,7 +20,7 @@ void free_recurrent_data(program_data *data)
 }
 
 /**
- * free_all_data - frees all field of the data
+ * free_all_data - frees all fields
  * @data: struct of the program's data
  * Return: Nothing
  */
@@ -37,7 +37,7 @@ void free_all_data(program_data *data)
 }
 
 /**
- * free_array_pointers - frees each pointer of an array and the
+ * free_array_pointers - frees each pointer
  * array too
  * @array: array of pointers
  * Return: nothing
