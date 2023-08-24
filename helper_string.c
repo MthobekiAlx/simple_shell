@@ -50,13 +50,13 @@ char *str_duplicate(char *string)
 }
 
 /**
- * str_compare - Compare two strings
+ * string_compare - Compare two strings
  * @string1: String one, or the shorter
  * @string2: String two, or the longer
  * @number: number of characters to be compared, 0 if infinite
  * Return: 1 if the strings are equals,0 if the strings are different
  */
-int str_compare(char *string1, char *string2, int number)
+int string_compare(char *string1, char *string2, int number)
 {
 	int iterator;
 
@@ -95,7 +95,7 @@ int str_compare(char *string1, char *string2, int number)
  *
  * Return: pointer to the array
  */
-char *str_concat(char *string1, char *string2)
+char *string_concat(char *string1, char *string2)
 {
 	char *result;
 	int length1 = 0, length2 = 0;
@@ -134,12 +134,12 @@ char *str_concat(char *string1, char *string2)
 
 
 /**
- * str_reverse - reverses a string.
+ * string_reverse - reverses a string.
  *
  * @string: pointer to string.
  * Return: void.
  */
-void str_reverse(char *string)
+void string_reverse(char *string)
 {
 
 	int i = 0, length = string_length(string) - 1;

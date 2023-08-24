@@ -43,7 +43,7 @@ void expand_variables(program_data *data)
 			temp ? buffer_add(line, temp) : 1;
 			buffer_add(line, expansion);
 		}
-	if (!str_compare(data->input_line, line, 0))
+	if (!string_compare(data->input_line, line, 0))
 	{
 		free(data->input_line);
 		data->input_line = str_duplicate(line);

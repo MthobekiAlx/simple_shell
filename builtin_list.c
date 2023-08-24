@@ -24,7 +24,7 @@ int builtins_list(program_data *data)
 	for (iterator = 0; options[iterator].builtin != NULL; iterator++)
 	{
 /*if there is a match between the given command and a builtin,*/
-		if (str_compare(options[iterator].builtin, data->command_name, 0))
+		if (string_compare(options[iterator].builtin, data->command_name, 0))
 		{
 /*execute the function, and return the return value of the function*/
 			return (options[iterator].function(data));

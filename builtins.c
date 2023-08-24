@@ -18,7 +18,7 @@ int exit_builtin(program_data *data)
 				errno = 2;
 				return (2);
 			}
-		errno = _atoi(data->tokens[1]);
+		errno = atoi(data->tokens[1]);
 	}
 	free_all_data(data);
 	exit(errno);
@@ -37,7 +37,7 @@ int cd_builtin(program_data *data)
 
 	if (data->tokens[1])
 	{
-		if (str_compare(data->tokens[1], "-", 0))
+		if (string_compare(data->tokens[1], "-", 0))
 		{
 			dir_old = env_get_key("OLDPWD", data);
 			if (dir_old)
@@ -75,7 +75,7 @@ int set_work_dir(program_data *data, char *new_dir)
 
 	getcwd(old_dir, 128);
 
-	if (!str_compare(old_dir, new_dir, 0))
+	if (!string_compare(old_dir, new_dir, 0))
 	{
 		err_code = chdir(new_dir);
 		if (err_code == -1)
@@ -122,7 +122,7 @@ int builtin_help(program_data *data)
 	for (i = 0; mensajes[i]; i++)
 	{
 		length = string_length(data->tokens[1]);
-		if (str_compare(data->tokens[1], mensajes[i], length))
+		if (string_compare(data->tokens[1], mensajes[i], length))
 		{
 			_print(mensajes[i] + length + 1);
 			return (1);
