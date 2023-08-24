@@ -51,7 +51,7 @@ typedef struct builtins
 } builtins;
 
 
-void inicialize_data(program_data *data, int arc, char *argv[], char **env);
+void initialize_data(program_data *data, int arc, char *argv[], char **env);
 void sisifo(char *prompt, program_data *data);
 void handle_ctrl_c(int opr UNUSED);
 int _get_line(program_data *data);
