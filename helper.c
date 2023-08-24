@@ -19,11 +19,6 @@ void free_recurrent_data(data_of_program *data)
 	data->tokens = NULL;
 }
 
-/**
- * free_all_data - free all field of the data
- * @data: struct of the program's data
- * Return: Nothing
- */
 void free_all_data(data_of_program *data)
 {
 	if (data->file_descriptor != 0)
@@ -36,12 +31,6 @@ void free_all_data(data_of_program *data)
 	free_array_of_pointers(data->alias_list);
 }
 
-/**
- * free_array_of_pointers - frees each pointer of an array of pointers and the
- * array too
- * @array: array of pointers
- * Return: nothing
- */
 void free_array_of_pointers(char **array)
 {
 	int i;

@@ -3,8 +3,10 @@
 /**
  * str_length - returns the length of a string.
  * @string: pointer to string.
+ * @string: String to be copied
  * Return: length of string.
  */
+ 
 int str_length(char *string)
 {
 	int length = 0;
@@ -17,12 +19,7 @@ int str_length(char *string)
 	}
 	return (--length);
 }
-
-/**
- * str_duplicate - duplicates an string
- * @string: String to be copied
- * Return: pointer to the array
- */
+ 
 char *str_duplicate(char *string)
 {
 	char *result;
@@ -49,13 +46,6 @@ char *str_duplicate(char *string)
 	return (result);
 }
 
-/**
- * str_compare - Compare two strings
- * @string1: String one, or the shorter
- * @string2: String two, or the longer
- * @number: number of characters to be compared, 0 if infinite
- * Return: 1 if the strings are equals,0 if the strings are different
- */
 int str_compare(char *string1, char *string2, int number)
 {
 	int iterator;
@@ -66,7 +56,7 @@ int str_compare(char *string1, char *string2, int number)
 	if (string1 == NULL || string2 == NULL)
 		return (0);
 
-	if (number == 0) /* infinite longitud */
+	if (number == 0) 
 	{
 		if (str_length(string1) != str_length(string2))
 			return (0);
@@ -77,7 +67,7 @@ int str_compare(char *string1, char *string2, int number)
 		}
 		return (1);
 	}
-	else /* if there is a number of chars to be compared */
+	else 
 	{
 		for (iterator = 0; iterator < number ; iterator++)
 		{
@@ -88,13 +78,6 @@ int str_compare(char *string1, char *string2, int number)
 	}
 }
 
-/**
- * str_concat - concatenates two strings.
- * @string1: String to be concatenated
- * @string2: String to be concatenated
- *
- * Return: pointer to the array
- */
 char *str_concat(char *string1, char *string2)
 {
 	char *result;
@@ -116,12 +99,10 @@ char *str_concat(char *string1, char *string2)
 		return (NULL);
 	}
 
-	/* copy of string1 */
 	for (length1 = 0; string1[length1] != '\0'; length1++)
 		result[length1] = string1[length1];
 	free(string1);
 
-	/* copy of string2 */
 	for (length2 = 0; string2[length2] != '\0'; length2++)
 	{
 		result[length1] = string2[length2];
@@ -132,13 +113,6 @@ char *str_concat(char *string1, char *string2)
 	return (result);
 }
 
-
-/**
- * str_reverse - reverses a string.
- *
- * @string: pointer to string.
- * Return: void.
- */
 void str_reverse(char *string)
 {
 
