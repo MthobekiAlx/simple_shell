@@ -1,11 +1,11 @@
 #include "shell.h"
 
 /**
- * builtin_exit - exit of the program with the status
+ * exit_builtin - exit of the program with the status
  * @data: struct for the program's data
  * Return: zero if sucess, or other number if its declared in the arguments
  */
-int builtin_exit(program_data *data)
+int exit_builtin(program_data *data)
 {
 	int i;
 
@@ -25,11 +25,11 @@ int builtin_exit(program_data *data)
 }
 
 /**
- * builtin_cd - change the current directory
+ * cd_builtin - change the current directory
  * @data: struct for the program's data
  * Return: zero if sucess, or other number if its declared in the arguments
  */
-int builtin_cd(program_data *data)
+int cd_builtin(program_data *data)
 {
 	char *dir_home = env_get_key("HOME", data), *dir_old = NULL;
 	char old_dir[128] = {0};
@@ -41,7 +41,7 @@ int builtin_cd(program_data *data)
 		{
 			dir_old = env_get_key("OLDPWD", data);
 			if (dir_old)
-				error_code = set_work_directory(data, dir_old);
+				error_code = set_work_dir(data, dir_old);
 			_print(env_get_key("PWD", data));
 			_print("\n");
 
@@ -49,7 +49,7 @@ int builtin_cd(program_data *data)
 		}
 		else
 		{
-			return (set_work_directory(data, data->tokens[1]));
+			return (set_work_dir(data, data->tokens[1]));
 		}
 	}
 	else
@@ -57,18 +57,18 @@ int builtin_cd(program_data *data)
 		if (!dir_home)
 			dir_home = getcwd(old_dir, 128);
 
-		return (set_work_directory(data, dir_home));
+		return (set_work_dir(data, dir_home));
 	}
 	return (0);
 }
 
 /**
- * set_work_directory - set the work directory
+ * set_work_dir - set the work directory
  * @data: struct for the program's data
  * @new_dir: path to be set as work directory
  * Return: zero if sucess, or other number if its declared in the arguments
  */
-int set_work_directory(program_data *data, char *new_dir)
+int set_work_dir(program_data *data, char *new_dir)
 {
 	char old_dir[128] = {0};
 	int err_code = 0;
@@ -121,7 +121,7 @@ int builtin_help(program_data *data)
 
 	for (i = 0; mensajes[i]; i++)
 	{
-		length = str_length(data->tokens[1]);
+		length = string_length(data->tokens[1]);
 		if (str_compare(data->tokens[1], mensajes[i], length))
 		{
 			_print(mensajes[i] + length + 1);
@@ -135,11 +135,11 @@ int builtin_help(program_data *data)
 }
 
 /**
- * builtin_alias - add, remove or show aliases
+ * alias_builtin - add, remove or show aliases
  * @data: struct for the program's data
  * Return: zero if sucess, or other number if its declared in the arguments
  */
-int builtin_alias(program_data *data)
+int alias_builtin(program_data *data)
 {
 	int i = 0;
 

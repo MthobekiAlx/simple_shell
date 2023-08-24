@@ -79,7 +79,7 @@ void expand_alias(program_data *data)
 			buffer_add(expansion, line + i + j);
 			line[i] = '\0';
 			buffer_add(line, temp);
-			line[str_length(line)] = '\0';
+			line[string_length(line)] = '\0';
 			buffer_add(line, expansion);
 			was_expanded = 1;
 		}
@@ -102,7 +102,7 @@ int buffer_add(char *buffer, char *str_to_add)
 {
 	int length, i;
 
-	length = str_length(buffer);
+	length = string_length(buffer);
 	for (i = 0; str_to_add[i]; i++)
 	{
 		buffer[length + i] = str_to_add[i];

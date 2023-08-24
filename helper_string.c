@@ -1,11 +1,11 @@
 #include "shell.h"
 
 /**
- * str_length - returns the length of a string.
+ * string_length - returns the length of a string.
  * @string: pointer to string.
  * Return: length of string.
  */
-int str_length(char *string)
+int string_length(char *string)
 {
 	int length = 0;
 
@@ -31,7 +31,7 @@ char *str_duplicate(char *string)
 	if (string == NULL)
 		return (NULL);
 
-	length = str_length(string) + 1;
+	length = string_length(string) + 1;
 
 	result = malloc(sizeof(char) * length);
 
@@ -68,7 +68,7 @@ int str_compare(char *string1, char *string2, int number)
 
 	if (number == 0) /* infinite longitud */
 	{
-		if (str_length(string1) != str_length(string2))
+		if (string_length(string1) != string_length(string2))
 			return (0);
 		for (iterator = 0; string1[iterator]; iterator++)
 		{
@@ -102,11 +102,11 @@ char *str_concat(char *string1, char *string2)
 
 	if (string1 == NULL)
 		string1 = "";
-	length1 = str_length(string1);
+	length1 = string_length(string1);
 
 	if (string2 == NULL)
 		string2 = "";
-	length2 = str_length(string2);
+	length2 = string_length(string2);
 
 	result = malloc(sizeof(char) * (length1 + length2 + 1));
 	if (result == NULL)
@@ -142,7 +142,7 @@ char *str_concat(char *string1, char *string2)
 void str_reverse(char *string)
 {
 
-	int i = 0, length = str_length(string) - 1;
+	int i = 0, length = string_length(string) - 1;
 	char hold;
 
 	while (i < length)

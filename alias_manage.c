@@ -13,7 +13,7 @@ int print_alias(program_data *data, char *alias)
 
 	if (data->alias_list)
 	{
-		alias_length = str_length(alias);
+		alias_length = string_length(alias);
 		for (i = 0; data->alias_list[i]; i++)
 		{
 			if (!alias || (str_compare(data->alias_list[i], alias, alias_length)
@@ -51,7 +51,7 @@ char *get_alias(program_data *data, char *name)
 	if (name == NULL || data->alias_list == NULL)
 		return (NULL);
 
-	alias_length = str_length(name);
+	alias_length = string_length(name);
 
 	for (i = 0; data->alias_list[i]; i++)
 	{/* Iterates through the environ and check for coincidence of the varname */

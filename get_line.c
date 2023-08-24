@@ -47,7 +47,7 @@ int _get_line(program_data *data)
 		array_operators[i] = array_operators[i + 1];
 	}
 
-	return (str_length(data->input_line));
+	return (string_length(data->input_line));
 }
 
 

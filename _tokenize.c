@@ -9,7 +9,7 @@ void tokenize(program_data *data)
 	char *delimiter = " \t";
 	int i, j, counter = 2, length;
 
-	length = str_length(data->input_line);
+	length = string_length(data->input_line);
 	if (length)
 	{
 		if (data->input_line[length - 1] == '\n')
