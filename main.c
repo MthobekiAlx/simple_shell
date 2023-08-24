@@ -1,9 +1,9 @@
 #include "shell.h"
 /**
  * main - initialize the variables of the program
- * @argc: number of values received from the command line
- * @argv: values received from the command line
- * @env: number of values received from the command line
+ * @argc: number of values received
+ * @argv: values received
+ * @env: number of values received
  * Return: zero on succes.
  */
 int main(int argc, char *argv[], char *env[])
@@ -26,8 +26,8 @@ int main(int argc, char *argv[], char *env[])
 }
 
 /**
- * handle_ctrl_c - print the prompt in a new line
- * when the signal SIGINT (ctrl + c) is send to the program
+ * handle_ctrl_c - print the prompt on new line
+ * when the signal SIGINT (ctrl + c) is sent to the program
  * @UNUSED: option of the prototype
  */
 void handle_ctrl_c(int opr UNUSED)
@@ -39,9 +39,9 @@ void handle_ctrl_c(int opr UNUSED)
 /**
  * initialize_data - inicialize the struct with the info of the program
  * @data: pointer to the structure of data
- * @argv: array of arguments pased to the program execution
- * @env: environ pased to the program execution
- * @argc: number of values received from the command line
+ * @argv: array of arguments 
+ * @env: environ passed 
+ * @argc: number of values received
  */
 void initialize_data(program_data *data, int argc, char *argv[], char **env)
 {
@@ -85,9 +85,9 @@ void initialize_data(program_data *data, int argc, char *argv[], char **env)
 	}
 }
 /**
- * sisifo - its a infinite loop that shows the prompt
+ * sisifo - its a infinite loop
  * @prompt: prompt to be printed
- * @data: its a infinite loop that shows the prompt
+ * @data: its a infinite loop
  */
 void sisifo(char *prompt, program_data *data)
 {
