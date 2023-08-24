@@ -4,7 +4,7 @@
  * env_get_key - gets the value of an environment variable
  * @key: the environment variable of interest
  * @data: struct of the program's data
- * Return: a pointer to the value of the variable or NULL if it doesn't exist
+ * Return: a pointer to the value of the variable
  */
 char *env_get_key(char *key, program_data *data)
 {
@@ -30,12 +30,12 @@ char *env_get_key(char *key, program_data *data)
 }
 
 /**
- * env_set_key - overwrite the value of the environment variable
+ * env_set_key - overwrite the value of the environment variables
  * or create it if does not exist.
  * @key: name of the variable to set
  * @value: new value
  * @data: struct of the program's data
- * Return: 1 if the parameters are NULL, 2 if there is an erroror 0 if sucess.
+ * Return: 1 if the parameters are NULL
  */
 
 int env_set_key(char *key, char *value, program_data *data)
@@ -76,7 +76,7 @@ int env_set_key(char *key, char *value, program_data *data)
  * env_remove_key - remove a key from the environment
  * @key: the key to remove
  * @data: the sructure of the program's data
- * Return: 1 if the key was removed, 0 if the key does not exist;
+ * Return: 1 if the key was removed
  */
 int env_remove_key(char *key, program_data *data)
 {
