@@ -92,7 +92,7 @@ void long_to_string(long number, char *string, int base);
 int _atoi(char *s);
 int count_characters(char *string, char *character);
 int print_alias(program_data *data, char *alias);
-char *alias_get(program_data *data, char *alias);
+char *get_alias(program_data *data, char *alias);
 int alias_set(char *alias_string, program_data *data);
 
 

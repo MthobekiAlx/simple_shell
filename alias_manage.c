@@ -43,7 +43,7 @@ int print_alias(program_data *data, char *alias)
  * @name: name of the requested alias.
  * Return: zero if sucess, or other number if its declared in the arguments
  */
-char *alias_get(program_data *data, char *name)
+char *get_alias(program_data *data, char *name)
 {
 	int i, alias_length;
 
