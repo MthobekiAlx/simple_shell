@@ -1,10 +1,10 @@
 #include "shell.h"
 
 /**
- * expand_var - expand variables
+ * expand_var - expand var
  * @data: a pointer to a struct of the program's data
  *
- * Return: nothing, but sets errno.
+ * Return: nothing.
  */
 void expand_var(program_data *data)
 {
@@ -51,10 +51,10 @@ void expand_var(program_data *data)
 }
 
 /**
- * expand_alias - expans aliases
+ * expand_alias - expans alias
  * @data: a pointer to a struct of the program's data
  *
- * Return: nothing, but sets errno.
+ * Return: nothing.
  */
 void expand_alias(program_data *data)
 {
@@ -93,10 +93,10 @@ void expand_alias(program_data *data)
 }
 
 /**
- * buffer_add - append string at end of the buffer
+ * buffer_add - append string at end of the buff
  * @buffer: buffer to be filled
- * @str_to_add: string to be copied in the buffer
- * Return: nothing, but sets errno.
+ * @str_to_add: string to be copied in the buff
+ * Return: nothing.
  */
 int buffer_add(char *buffer, char *str_to_add)
 {
