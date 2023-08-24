@@ -8,7 +8,7 @@
 void free_recurrent_data(program_data *data)
 {
 	if (data->tokens)
-		free_array_of_pointers(data->tokens);
+		free_array_pointers(data->tokens);
 	if (data->input_line)
 		free(data->input_line);
 	if (data->command_name)
@@ -32,17 +32,17 @@ void free_all_data(program_data *data)
 			perror(data->program_name);
 	}
 	free_recurrent_data(data);
-	free_array_of_pointers(data->env);
-	free_array_of_pointers(data->alias_list);
+	free_array_pointers(data->env);
+	free_array_pointers(data->alias_list);
 }
 
 /**
- * free_array_of_pointers - frees each pointer of an array of pointers and the
+ * free_array_pointers - frees each pointer of an array of pointers and the
  * array too
  * @array: array of pointers
  * Return: nothing
  */
-void free_array_of_pointers(char **array)
+void free_array_pointers(char **array)
 {
 	int i;
 

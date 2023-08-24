@@ -65,7 +65,7 @@ int execute(program_data *data);
 int builtins_list(program_data *data);
 char **tokenize_path(program_data *data);
 int find_program(program_data *data);
-void free_array_of_pointers(char **directories);
+void free_array_pointers(char **directories);
 void free_recurrent_data(program_data *data);
 void free_all_data(program_data *data);
 int builtin_exit(program_data *data);
