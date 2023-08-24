@@ -1,2 +1,1 @@
-# simple_shell
-A project to wrap up sprint 1 of Alx SE program. Done by by two persons
+The most difficult project ive done on the ALX program and once you start getting it you start getting it
