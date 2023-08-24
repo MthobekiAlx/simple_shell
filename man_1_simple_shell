@@ -1,0 +1,130 @@
+.TH SHELLLY 1 "24 August 2023" "Mthobezi Sikhosana"
+.SH NAME
+.B shellly\fR \- artful UNIX command conductor
+.SH SYNOPSIS
+.B shellly\fR [\fIfilename\fR]
+.SH DESCRIPTION
+.B Shellly\fR embodies the role of an artful conductor for UNIX commands. It thrives on orchestrating command symphonies from diverse sources, whether script scrolls or vocalized through standard input.
+
+.B A Glance into the Shellly Symphony
+.in +2n
+\fBShellly\fR dons the garb of both interactive maestro and serene executor. When summoned with the ethereal standard input, it breathes life into commands like musical notes on a cosmic staff.
+
+Yet, when summoned within the tapestry of a terminal, it unveils an interactive overture. A conductor, ready to heed your command crescendos, inviting the opening note, symbolized by \fI$ \fR.
+
+Alternatively, if the invocation carries scrolls of command line as ancient scriptures, \fBShellly\fR treats the first scroll as a tome. Within this tome, each line unveils a command, and \fBShellly\fR weaves these commands into an orchestrated symphony, executed in harmonious succession.
+.in
+
+.B Environment Symphony
+.in +2n
+At the dawning invocation, \fBShellly\fR inherits the cosmic harmony from its ancestral process. This harmonious \fBenvironment\fR resonates as a chorus of \fIattribute-name\fR sonnets, where each note resembles \fINAME=VALUE\fR.
+.in
+
+.B Composition of Command Art
+.in +2n
+Upon receiving a command, \fBShellly\fR, the artistic composer, weaves lyrical words into an intricate tapestry. The first word serves as the conductor's baton, while the subsequent words harmonize as notes within the composition.
+
+.B As the Score Unfolds
+
+.RS
+1. When the command's essence lacks the signature of a slash (\fI\\\fR) or the echo of a dot (\fI.\fR), \fBShellly\fR consults its anthology of melodic magic. If a lyrical spell is found, it directs the symphony to dance to its tune.
+.RE
+
+.RS
+2. Should the command refrain from revealing slashes (\fI\\\fR) or dots (\fI.\fR), and remain uncharted by lyrical spells, \fBShellly\fR embarks on a serenade through the \fBPATH\fR alleys. Each alley, a realm of possible instrumental solos.
+.RE
+
+.RS
+3. When the command's essence carries whispers of a slash (\fI\\\fR) or a dot (\fI.\fR), or aligns with the lore of the magical spells, \fBShellly\fR composes a gateway. This gateway ushers the named maestro, escorted by accompanying notes, into an auditory performance.
+.RE
+
+.B The Crescendo of Return
+.in +2n
+As the composition concludes, \fBShellly\fR takes its final bow, reciting tales spun by melodious commands. The climax of the opening note marks the conclusion, unveiling a triumphant exit status.
+
+Should a lyrical spell remain unvoiced, \fBShellly\fR confers the mark of 127. And if the spell, though known, fails to enchant, the mark of 126 reverberates.
+
+As the realm echoes, built-in sonnets echo triumph or woe, summoning returns of zero, one, or two, along with the resonance of error.
+.in
+
+.B Reverberating Signals
+.in +2n
+Within the realm of interactive invocation, \fBShellly\fR suspends the orchestra's pause button \fBCtrl+c\fR, granting a respite to the minstrels. However, the notes of \fBCtrl+d\fR conclude the symphony, bidding adieu to the performance.
+.in
+
+.B Symphonic Note Substitution
+.in +2n
+\fBShellly\fR, the master composer, heeds the silent melodies of \fI$\fR for lyrical substitution:
+
+.RS
+.B $MUSICAL_NOTE\fR	\fIMUSICAL_NOTE\fR resonates with its true essence.
+.RE
+
+.RS
+.B $?\fR			The \fI?\fR note resonates with the echoes of the previous act.
+.RE
+
+.RS
+.B $$\FR			The twin \fI$\fR notes harmonize as the composition's current identity.
+.RE
+
+.B Whispers in the Score
+.in +2n
+Within the symphony of notes, \fBShellly\fR heeds the whispers of \fI#\fR. Whispers preceding the \fI#\fR fade into obscurity, a silent offering to the unseen.
+.in
+
+.B Harmonizing Musical Notations
+.in +2n
+
+.RS
+.B ;\fR - The Pause Between Notes
+.RS
+Commands adorned with \fI;\fR await their turn, as a pause between musical notes.
+.RE
+
+.B &&\fR - The Melodic Confluence
+.RS
+\fIcommand1\fR && \fIcommand2\fR: Only when \fIcommand1\fR resonates with zero, the harmonious \fIcommand2\fR's tune fills the air.
+.RE
+
+.B ||\fR - The Diverging Chords
+.RS
+\fIcommand1\fR || \fIcommand2\fR: If \fIcommand1\fR echoes with non-zero, \fIcommand2\fR's melody springs forth from the shadows.
+.RE
+
+And the musical stars, \fI&&\fR and \fI||\fR, shimmer in balance, with the echoes of \fI;\fR trailing softly behind.
+.RE
+
+.B Shellly's Symphony of Commands
+.in +2n
+
+.RS
+.B compose
+.RS
+Usage: .B compose [MUSICAL_NOTES]
+
+The enchanting \fBcompose\fR directive orchestrates a symphony of \fIMUSICAL_NOTES\fR, sounding the resonance of melodious notes to the cosmic audience.
+
+If no melody graces the invocation, a serene silence envelops the surroundings.
+.RE
+
+.B harmonize
+.RS
+Usage: .B harmonize [HARMONY_NAME[='HARMONY_MELODY'] ...]
+
+Grant harmonious titles to melodies, or beckon the echoes of harmonies past.
+
+.I harmonize\fR: Chronicles of all harmonies, inscribed in the form \fIHARMONY_NAME='HARMONY_MELODY'\fR.
+
+.I harmonize HARMONY_NAME [HARMONY_NAME2 ...]\fR: Summons echoes of harmonies by name, illuminating \fIHARMONY_NAME='HARMONY_MELODY'\fR.
+
+.I harmonize HARMONY_NAME='HARMONY_MELODY' [...]\fR: Composes and unites melodies, where \fIHARMONY_NAME\fR forms an eternal bond with \fIHARMONY_MELODY\fR.
+.RE
+.RE
+.in
+
+.SH SEE ALSO
+access(2), chdir(2), execve(2), _exit(2), exit(3), fflush(3), fork(2), free(3), isatty(3), getcwd(3), malloc(3), open(2), read(2), sh(1), signal(2), stat(2), wait(2), write(2)
+
+.B Shellly\fR composes the essence of \fBsh\fR and \fBdash\fR, with a unique symphony.
+
