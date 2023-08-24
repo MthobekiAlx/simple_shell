@@ -94,14 +94,7 @@ int buffer_add(char *buffer, char *str_to_add);
 
 /* Separate the string in tokens using a designed delimiter */
 void tokenize(program_data *data);
-
-/* Creates a pointer to a part of a string */
 char *_strtok(char *line, char *delim);
-
-
-/*======== execute.c ========*/
-
-/* Execute a command with its entire path */
 int execute(program_data *data);
 
 
