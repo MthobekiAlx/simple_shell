@@ -6,7 +6,7 @@
  * @alias: name of the alias to be printed
  * Return: zero if sucess, or other number if its declared in the arguments
  */
-int print_alias(data_of_program *data, char *alias)
+int print_alias(program_data *data, char *alias)
 {
 	int i, j, alias_length;
 	char buffer[250] = {'\0'};
@@ -43,7 +43,7 @@ int print_alias(data_of_program *data, char *alias)
  * @name: name of the requested alias.
  * Return: zero if sucess, or other number if its declared in the arguments
  */
-char *get_alias(data_of_program *data, char *name)
+char *get_alias(program_data *data, char *name)
 {
 	int i, alias_length;
 
@@ -72,7 +72,7 @@ char *get_alias(data_of_program *data, char *name)
  * @data: struct for the program's data
  * Return: zero if sucess, or other number if its declared in the arguments
  */
-int set_alias(char *alias_string, data_of_program *data)
+int set_alias(char *alias_string, program_data *data)
 {
 	int i, j;
 	char buffer[250] = {'0'}, *temp = NULL;

@@ -37,7 +37,7 @@ typedef struct info
 	char **tokens;
 	char **env;
 	char **alias_list;
-} data_of_program;
+} program_data;
 
 /**
  * struct builtins - structure for the built ins
@@ -47,42 +47,42 @@ typedef struct info
 typedef struct builtins
 {
 	char *builtin;
-	int (*function)(data_of_program *data);
+	int (*function)(program_data *data);
 } builtins;
 
 
-void inicialize_data(data_of_program *data, int arc, char *argv[], char **env);
-void sisifo(char *prompt, data_of_program *data);
+void inicialize_data(program_data *data, int arc, char *argv[], char **env);
+void sisifo(char *prompt, program_data *data);
 void handle_ctrl_c(int opr UNUSED);
-int _getline(data_of_program *data);
+int _getline(program_data *data);
 int check_logic_ops(char *array_commands[], int i, char array_operators[]);
-void expand_variables(data_of_program *data);
-void expand_alias(data_of_program *data);
+void expand_variables(program_data *data);
+void expand_alias(program_data *data);
 int buffer_add(char *buffer, char *str_to_add);
-void tokenize(data_of_program *data);
+void tokenize(program_data *data);
 char *_strtok(char *line, char *delim);
-int execute(data_of_program *data);
-int builtins_list(data_of_program *data);
-char **tokenize_path(data_of_program *data);
-int find_program(data_of_program *data);
+int execute(program_data *data);
+int builtins_list(program_data *data);
+char **tokenize_path(program_data *data);
+int find_program(program_data *data);
 void free_array_of_pointers(char **directories);
-void free_recurrent_data(data_of_program *data);
-void free_all_data(data_of_program *data);
-int builtin_exit(data_of_program *data);
-int builtin_cd(data_of_program *data);
-int set_work_directory(data_of_program *data, char *new_dir);
-int builtin_help(data_of_program *data);
-int builtin_alias(data_of_program *data);
-int builtin_env(data_of_program *data);
-int builtin_set_env(data_of_program *data);
-int builtin_unset_env(data_of_program *data);
-char *env_get_key(char *name, data_of_program *data);
-int env_set_key(char *key, char *value, data_of_program *data);
-int env_remove_key(char *key, data_of_program *data);
-void print_environ(data_of_program *data);
+void free_recurrent_data(program_data *data);
+void free_all_data(program_data *data);
+int builtin_exit(program_data *data);
+int builtin_cd(program_data *data);
+int set_work_directory(program_data *data, char *new_dir);
+int builtin_help(program_data *data);
+int builtin_alias(program_data *data);
+int builtin_env(program_data *data);
+int builtin_set_env(program_data *data);
+int builtin_unset_env(program_data *data);
+char *env_get_key(char *name, program_data *data);
+int env_set_key(char *key, char *value, program_data *data);
+int env_remove_key(char *key, program_data *data);
+void print_environ(program_data *data);
 int _print(char *string);
 int _printe(char *string);
-int _print_error(int errorcode, data_of_program *data);
+int _print_error(int errorcode, program_data *data);
 int str_length(char *string);
 char *str_duplicate(char *string);
 int str_compare(char *string1, char *string2, int number);
@@ -91,9 +91,9 @@ void str_reverse(char *string);
 void long_to_string(long number, char *string, int base);
 int _atoi(char *s);
 int count_characters(char *string, char *character);
-int print_alias(data_of_program *data, char *alias);
-char *get_alias(data_of_program *data, char *alias);
-int set_alias(char *alias_string, data_of_program *data);
+int print_alias(program_data *data, char *alias);
+char *get_alias(program_data *data, char *alias);
+int set_alias(char *alias_string, program_data *data);
 
 
 #endif /* SHELL_H */

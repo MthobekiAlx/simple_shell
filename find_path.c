@@ -8,7 +8,7 @@ int check_file(char *full_path);
  * Return: 0 if success, errcode otherwise
  */
 
-int find_program(data_of_program *data)
+int find_program(program_data *data)
 {
 	int i = 0, ret_code = 0;
 	char **directories;
@@ -57,7 +57,7 @@ int find_program(data_of_program *data)
  * Return: array of path directories
  */
 
-char **tokenize_path(data_of_program *data)
+char **tokenize_path(program_data *data)
 {
 	int i = 0;
 	int counter_directories = 2;

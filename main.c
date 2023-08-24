@@ -8,7 +8,7 @@
  */
 int main(int argc, char *argv[], char *env[])
 {
-	data_of_program data_struct = {NULL}, *data = &data_struct;
+	program_data data_struct = {NULL}, *data = &data_struct;
 	char *prompt = "";
 
 	inicialize_data(data, argc, argv, env);
@@ -43,7 +43,7 @@ void handle_ctrl_c(int opr UNUSED)
  * @env: environ pased to the program execution
  * @argc: number of values received from the command line
  */
-void inicialize_data(data_of_program *data, int argc, char *argv[], char **env)
+void inicialize_data(program_data *data, int argc, char *argv[], char **env)
 {
 	int i = 0;
 
@@ -89,7 +89,7 @@ void inicialize_data(data_of_program *data, int argc, char *argv[], char **env)
  * @prompt: prompt to be printed
  * @data: its a infinite loop that shows the prompt
  */
-void sisifo(char *prompt, data_of_program *data)
+void sisifo(char *prompt, program_data *data)
 {
 	int error_code = 0, string_len = 0;
 
