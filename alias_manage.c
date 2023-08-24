@@ -43,7 +43,7 @@ int print_alias(program_data *data, char *alias)
  * @name: name of the requested alias.
  * Return: zero if sucess, or other number if its declared in the arguments
  */
-char *get_alias(program_data *data, char *name)
+char *alias_get(program_data *data, char *name)
 {
 	int i, alias_length;
 
@@ -67,12 +67,12 @@ char *get_alias(program_data *data, char *name)
 }
 
 /**
- * set_alias - add, or override alias
+ * alias_set - add, or override alias
  * @alias_string: alias to be seted in the form (name='value')
  * @data: struct for the program's data
  * Return: zero if sucess, or other number if its declared in the arguments
  */
-int set_alias(char *alias_string, program_data *data)
+int alias_set(char *alias_string, program_data *data)
 {
 	int i, j;
 	char buffer[250] = {'0'}, *temp = NULL;
